@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: dope-reads-data-loader
+  data:
+    cassandra:
+      keyspace-name: main
+      username: <username>
+      password: <password>
+      schema-action: create-if-not-exists
+      request:
+        timeout: 10s
+      connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+
+datastax.astra:
+  secure-connect-bundle: secure-connect.zip
+
+astra.db:
+  id: <id>
+  region: us-east1
+  keyspace: main
+  application.token: <application-token>
+
+datadump.location:
+  authors: C:\Users\jaybi\Desktop\Jay-Desktop\Data\Open-Library\ol_test_authors.txt
+  works: C:\Users\jaybi\Desktop\Jay-Desktop\Data\Open-Library\ol_test_works.txt
