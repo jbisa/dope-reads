@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: dope-reads-service
+  security:
+    user:
+      name: foo
+      password: foo
+
+server:
+  port: 8081
+  error:
+    include-message: always
