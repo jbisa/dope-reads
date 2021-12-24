@@ -1,5 +1,6 @@
 package com.jbisa.dopereads.service.security;
 
+import com.jbisa.dopereads.service.enums.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,20 +17,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("jbisa")
                 .password("foo")
-                .roles("USER")
+                .roles(Role.USER.toString())
                 .and()
                 .withUser("nbisa")
                 .password("bar")
-                .roles("ADMIN");
+                .roles(Role.ADMIN.toString());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/").permitAll()
-                .and().formLogin();
+                .antMatchers("/admin/*")
+                .hasRole(Role.ADMIN.toString())
+                .antMatchers("/user")
+                .hasAnyRole(Role.ADMIN.toString(), Role.USER.toString())
+                .antMatchers("/")
+                .permitAll()
+                .and()
+                .formLogin();
     }
 
     @Bean
