@@ -1,8 +1,16 @@
 spring:
   application:
     name: dope-reads-service
-
+  server:
+    error:
+      include-message: always
+---
+spring:
+  profiles: dev
 server:
   port: 8081
-  error:
-    include-message: always
+---
+spring:
+  profiles: test
+server:
+  port: 9000
