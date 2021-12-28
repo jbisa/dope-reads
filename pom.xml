@@ -11,6 +11,7 @@
 
     <modules>
         <module>data-loader</module>
+        <module>demo-clr</module>
         <module>service</module>
     </modules>
 </project>
